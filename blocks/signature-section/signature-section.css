@@ -1,0 +1,93 @@
+/* Main wrapper for the signature section */
+.signature-section-wrapper {
+    width: 100%;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Flex container for the text and image */
+.signature-section-wrapper .flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* Style for the text section */
+.signature-section-wrapper .flex-wrapper > div:first-child {
+    flex: 1;
+    padding-right: 2rem;
+    text-align: left;
+}
+
+.signature-section-wrapper h1, .signature-section-wrapper h2 {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+}
+
+.signature-section-wrapper h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.signature-section-wrapper h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Style for the image section */
+.signature-section-wrapper .flex-wrapper > div:last-child {
+    flex: 1;
+    max-width: 50%;
+}
+
+.signature-section-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Link section below the image and text */
+.signature-section-wrapper .links-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.signature-section-wrapper .links-section a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 1rem;
+}
+
+.signature-section-wrapper .links-section a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Mobile first styles */
+@media (max-width: 768px) {
+    /* Stack the text and image vertically on smaller screens */
+    .signature-section-wrapper .flex-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Allow image to take full width */
+    .signature-section-wrapper .flex-wrapper > div:last-child {
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    /* Adjust text size for smaller screens */
+    .signature-section-wrapper h1 {
+        font-size: 2rem;
+    }
+
+    .signature-section-wrapper h2 {
+        font-size: 1.25rem;
+    }
+}

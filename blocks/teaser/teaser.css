@@ -1,0 +1,107 @@
+/* Main wrapper */
+.teaser-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 10rem;
+}
+
+/* Teaser block */
+.teaser {
+    display: flex;
+    gap: 2%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 90%;
+    width: 100%;
+}
+
+/* Individual teaser item */
+.teaser > div {
+    position: relative;
+    flex: 1 1 30%; 
+    max-width: 35%;
+    overflow: hidden;
+}
+
+.teaser picture {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.teaser img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Text overlay */
+.teaser > div > div:nth-child(2) {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    padding: 1rem;
+    width: 80%;
+    border-radius: 0.5rem;
+}
+
+.teaser h2 {
+    font-size: 2.9rem;
+    margin-bottom: 0.5rem;
+    font-weight: 100;
+}
+
+.teaser p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .teaser {
+        gap: 1rem;
+    }
+
+    .teaser > div {
+        flex: 1 1 45%;
+        max-width: 48%;
+    }
+}
+
+@media (max-width: 768px) {
+    .teaser {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .teaser > div {
+        max-width: 90%;
+    }
+
+    .teaser > div > div:nth-child(2) {
+        width: 90%;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .teaser-wrapper {
+        padding: 1rem;
+    }
+
+    .teaser h2 {
+        font-size: 1.2rem;
+    }
+
+    .teaser p {
+        font-size: 0.9rem;
+    }
+}

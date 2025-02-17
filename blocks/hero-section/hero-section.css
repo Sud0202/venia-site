@@ -25,6 +25,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-bottom: 3%;
 }
 
 /* Slide styles */
@@ -142,6 +143,7 @@
 
   .carousel-section {
       gap: 80px; 
+      margin-bottom: 3%;
   }
 }
 
