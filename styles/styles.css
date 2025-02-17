@@ -27,9 +27,10 @@
   --body-font-size-m: 22px;
   --body-font-size-s: 19px;
   --body-font-size-xs: 17px;
+  --body-font-size-xxs: 14px;
 
   /* heading sizes */
-  --heading-font-size-xxl: 55px;
+  --heading-font-size-xxl: 45px;
   --heading-font-size-xl: 44px;
   --heading-font-size-l: 34px;
   --heading-font-size-m: 27px;
@@ -106,7 +107,7 @@ h5,
 h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
-  font-family: var(--heading-font-family);
+  /* font-family: var(--heading-font-family); */
   font-weight: 600;
   line-height: 1.25;
   scroll-margin: 40px;
@@ -246,12 +247,4 @@ main > .section:first-of-type {
   main > .section > div {
     padding: 0 32px;
   }
-}
-
-/* section metadata */
-main .section.light,
-main .section.highlight {
-  background-color: var(--light-color);
-  margin: 0;
-  padding: 40px 0;
 }

@@ -261,8 +261,45 @@ header nav .nav-sections ul > li > ul > li {
     padding: 8px 0;
   }
 }
+/* brand */
+header .nav-brand {
+  grid-area: brand;
+  flex-basis: 128px;
+  font-size: var(--heading-font-size-s);
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+header nav .nav-brand img {
+  width: 128px;
+  height: auto;
+}
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* Add these new styles */
+header nav .nav-tools .default-content-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+header nav .nav-tools .default-content-wrapper p {
+  margin: 0;
+}
+
+header nav .nav-tools .icon img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+.icon.icon-VeniaLogo {
+  width: auto;
+}
+
+
