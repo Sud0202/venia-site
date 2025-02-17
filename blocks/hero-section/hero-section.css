@@ -14,10 +14,17 @@
   z-index: 1; 
 }
 
+.slides-wrapper {
+  position: relative;
+  width: 100%;
+  height: 95%;
+  overflow: hidden;
+}
+
 .carousel-section {
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  gap: 10px;
 }
 
 /* Slide styles */
@@ -28,14 +35,22 @@
   top: 0;
   left: 0;
   opacity: 0;
-  display: none;
-  transition: opacity 0.5s ease-in-out;
-  z-index: 1; /* Add z-index */
+  display: block;
+  transform: translateX(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: 1;
 }
 
 .slide.active {
-  display: block;
   opacity: 1;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.slide.prev {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
 }
 
 .slide img {
@@ -50,14 +65,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
+  width: 50%;
   max-width: 800px;
   text-align: center;
   z-index: 2;
 }
 
 .hero-text h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: 100;
   color: var(--text-color);
@@ -88,8 +103,8 @@
   display: flex;
   gap: 12px;
   justify-content: center;
-  padding: 0; /* Remove padding */
-  margin: 0; /* Remove margin */
+  padding: 0;
+  margin: 0;
 }
 
 .indicator {
@@ -126,7 +141,7 @@
   }
 
   .carousel-section {
-      gap: 200px; 
+      gap: 80px; 
   }
 }
 

@@ -35,7 +35,6 @@ export default function decorate(block) {
         if (textSets[index]) {
             textContainer.appendChild(textSets[index].title.cloneNode(true));
             textContainer.appendChild(textSets[index].description.cloneNode(true));
-            // Add shop now button to each slide
             textContainer.appendChild(shopNowButton.cloneNode(true));
         }
         
@@ -76,13 +75,31 @@ export default function decorate(block) {
     function showSlide(index) {
         const slides = document.querySelectorAll('.slide');
         const indicators = document.querySelectorAll('.indicator');
+        const currentActive = document.querySelector('.slide.active');
         
-        slides.forEach((slide, i) => {
-            slide.classList.toggle('active', i === index);
-        });
+        // Remove active class from all indicators
+        indicators.forEach(indicator => indicator.classList.remove('active'));
         
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
+        // If there's a currently active slide, make it the prev slide
+        if (currentActive) {
+            currentActive.classList.remove('active');
+            currentActive.classList.add('prev');
+        }
+        
+        // Activate new slide
+        slides[index].classList.remove('prev');
+        slides[index].classList.add('active');
+        indicators[index].classList.add('active');
+        
+        // Clean up prev class after animation
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                slides.forEach(slide => {
+                    if (!slide.classList.contains('active')) {
+                        slide.classList.remove('prev');
+                    }
+                });
+            });
         });
     }
 }
