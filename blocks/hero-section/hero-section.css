@@ -70,19 +70,25 @@
   max-width: 800px;
   text-align: center;
   z-index: 2;
+  font-family: var(--heading-font-family);
+  font-weight: var(--font-weight-light);
+  font-style: var(--font-style-normal);
 }
 
 .hero-text h1 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  font-weight: 100;
+  font-weight: var(--font-weight-light);
   color: var(--text-color);
+  font-family: var(--heading-font-family);
 }
 
 .hero-text p {
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-weight: var(--font-weight-light);
 }
 
 .hero-text a.button:any-link {
@@ -95,7 +101,8 @@
   color: var(--text-color);
   text-decoration: underline;
   font-size: 1rem;
-  font-weight: normal;
+  font-weight: var(--font-weight-light);
+  font-family: var(--body-font-family);
   text-transform: none;
 }
 
@@ -125,25 +132,25 @@
 /* Desktop styles */
 @media (min-width: 900px) {
   .hero-text {
-      left: 5%;
-      transform: translateY(-60%);
-      text-align: center;
-      width: 40%;
-      gap: 25px;
+    left: 5%;
+    transform: translateY(-60%);
+    text-align: center;
+    width: 40%;
+    gap: 25px;
   }
 
   .hero-text h1 {
-      font-size: 3.5rem;
-      font-weight: 100;
+    font-size: 3.5rem;
+    font-weight: var(--font-weight-light);
   }
 
   .hero-text p {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 
   .carousel-section {
-      gap: 80px; 
-      margin-bottom: 3%;
+    gap: 80px; 
+    margin-bottom: 3%;
   }
 }
 

@@ -91,20 +91,20 @@
     }
 
     .signature-section-wrapper h1 {
-        font-size: 3.5rem;
+        font-size: 2.5rem;
         font-weight: 100;
         margin-bottom: 1rem;
     }
 
     .signature-section-wrapper h2 {
-        font-size: 1.25rem;
+        font-size: 0.93rem;
         font-weight: 100;
         margin-bottom: 1rem;
     }
 
     .signature-section-wrapper h2#lorem-ipsum-dolor-tempor {
-        font-size: 2.25rem;
-        font-weight: 200;
+        font-size: 1.2rem;
+        font-weight: 100;
         letter-spacing: 1px;
     }
 

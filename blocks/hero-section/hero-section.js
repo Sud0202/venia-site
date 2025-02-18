@@ -1,105 +1,72 @@
 export default function decorate(block) {
-    const slides = Array.from(block.children).filter(child => child.querySelector('picture'));
-    const textContent = Array.from(block.children).filter(child => !child.querySelector('picture'));
+    // Get all slides and text content
+    const imageSlides = [...block.children].filter(child => child.querySelector('picture'));
+    const textElements = [...block.children].filter(child => !child.querySelector('picture'));
+    const shopNowButton = textElements.pop();
 
-    // Group text content into sets (title + description)
-    const textSets = [];
-    const shopNowButton = textContent[textContent.length - 1]; // Last element is always the shop now button
-    
-    // Group text content in pairs (excluding the shop now button)
-    for (let i = 0; i < textContent.length - 1; i += 2) {
-        if (textContent[i] && textContent[i + 1]) {
-            textSets.push({
-                title: textContent[i],
-                description: textContent[i + 1]
-            });
-        }
-    }
-
+    // Create carousel structure
     const carousel = document.createElement('div');
     carousel.classList.add('carousel');
-
+    
     const slidesWrapper = document.createElement('div');
     slidesWrapper.classList.add('slides-wrapper');
 
-    // Create slides with corresponding text
-    slides.forEach((slide, index) => {
+    // Build slides
+    imageSlides.forEach((slide, index) => {
         slide.classList.add('slide');
         if (index === 0) slide.classList.add('active');
-        
-        // Create text container for this slide
+
+        // Create text container
         const textContainer = document.createElement('div');
         textContainer.classList.add('hero-text');
+
+        // Calculate start index for this slide's text content
+        const textStartIndex = index * 2;
         
-        // Add corresponding text content if available
-        if (textSets[index]) {
-            textContainer.appendChild(textSets[index].title.cloneNode(true));
-            textContainer.appendChild(textSets[index].description.cloneNode(true));
+        // Add title and description if they exist for this slide
+        if (textElements[textStartIndex] && textElements[textStartIndex + 1]) {
+            textContainer.appendChild(textElements[textStartIndex].cloneNode(true));
+            textContainer.appendChild(textElements[textStartIndex + 1].cloneNode(true));
             textContainer.appendChild(shopNowButton.cloneNode(true));
         }
-        
+
         slide.appendChild(textContainer);
         slidesWrapper.appendChild(slide);
     });
 
-    carousel.appendChild(slidesWrapper);
-    block.innerHTML = '';
-    block.appendChild(carousel);
-
-    // Create carousel section and indicators
-    const carouselSection = document.createElement('div');
-    carouselSection.classList.add('carousel-section');
-    
-    block.removeChild(carousel);
-    carouselSection.appendChild(carousel);
-    
+    // Create indicators
     const indicators = document.createElement('div');
     indicators.classList.add('carousel-indicators');
     
-    slides.forEach((_, index) => {
-        const indicator = document.createElement('span');
-        indicator.classList.add('indicator');
-        if (index === 0) indicator.classList.add('active');
-        indicator.addEventListener('click', () => {
-            currentIndex = index;
-            showSlide(currentIndex);
-        });
-        indicators.appendChild(indicator);
+    imageSlides.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('indicator');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => showSlide(index));
+        indicators.appendChild(dot);
     });
-    
+
+    // Assemble final structure
+    carousel.appendChild(slidesWrapper);
+    const carouselSection = document.createElement('div');
+    carouselSection.classList.add('carousel-section');
+    carouselSection.appendChild(carousel);
     carouselSection.appendChild(indicators);
+
+    // Replace content
+    block.innerHTML = '';
     block.appendChild(carouselSection);
+}
 
-    let currentIndex = 0;
+function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.indicator');
 
-    function showSlide(index) {
-        const slides = document.querySelectorAll('.slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const currentActive = document.querySelector('.slide.active');
-        
-        // Remove active class from all indicators
-        indicators.forEach(indicator => indicator.classList.remove('active'));
-        
-        // If there's a currently active slide, make it the prev slide
-        if (currentActive) {
-            currentActive.classList.remove('active');
-            currentActive.classList.add('prev');
-        }
-        
-        // Activate new slide
-        slides[index].classList.remove('prev');
-        slides[index].classList.add('active');
-        indicators[index].classList.add('active');
-        
-        // Clean up prev class after animation
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                slides.forEach(slide => {
-                    if (!slide.classList.contains('active')) {
-                        slide.classList.remove('prev');
-                    }
-                });
-            });
-        });
-    }
+    // Update slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+
+    // Update indicators
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[index].classList.add('active');
 }

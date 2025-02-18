@@ -1,8 +1,6 @@
 import { loadCSS, loadScript } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-    // Get the wrapper element
-    const wrapper = block.closest('.product-showcase-wrapper');
     
     // Create wrapper for products
     const productsWrapper = document.createElement('div');
@@ -89,6 +87,6 @@ export default async function decorate(block) {
         }, 1000);
         
     } catch (error) {
-        console.error('Error loading products:', error);
+        console.error('Error loading products');
     }
 }
