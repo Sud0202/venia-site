@@ -152,7 +152,7 @@ header nav .nav-brand img {
 /* sections */
 header nav .nav-sections {
   grid-area: sections;
-  flex: 1 1 auto;
+  flex: 1 2 auto;
   display: none;
   visibility: hidden;
 }
@@ -185,7 +185,7 @@ header nav .nav-sections ul > li > ul > li {
   header nav .nav-sections {
     display: block;
     visibility: visible;
-    white-space: nowrap;
+    align-self: center;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
@@ -214,8 +214,15 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections ul {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 24px;
-    margin: 0;
+    margin: 0 auto;
+  }
+
+  header nav .nav-sections ul > li {
+    padding: 0 12px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
