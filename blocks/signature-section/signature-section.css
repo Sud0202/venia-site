@@ -6,7 +6,7 @@
 }
 
 /* Flex container for the text and image */
-.signature-section-wrapper .flex-wrapper {
+.signature-content-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,30 +14,32 @@
 }
 
 /* Style for the text section */
-.signature-section-wrapper .flex-wrapper > div:first-child {
+.signature-text {
     flex: 1;
     padding-right: 2rem;
-    text-align: left;
-}
-
-.signature-section-wrapper h1, .signature-section-wrapper h2 {
-    margin: 0;
-    font-weight: 600;
-    color: #333;
+    text-align: center;
 }
 
 .signature-section-wrapper h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    font-weight: 100;
     margin-bottom: 1rem;
 }
 
 .signature-section-wrapper h2 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 100;
     margin-bottom: 1rem;
 }
 
+.signature-section-wrapper h2#lorem-ipsum-dolor-tempor {
+    font-size: 2.25rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
 /* Style for the image section */
-.signature-section-wrapper .flex-wrapper > div:last-child {
+.signature-image {
     flex: 1;
     max-width: 50%;
 }
@@ -55,39 +57,64 @@
     margin-top: 2rem;
 }
 
-.signature-section-wrapper .links-section a {
-    text-decoration: none;
-    color: #007bff;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0 1rem;
-}
-
-.signature-section-wrapper .links-section a:hover {
+.signature-section-wrapper .signature-links a {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: var(--text-color);
     text-decoration: underline;
-    color: #0056b3;
+    font-size: 1rem;
+    font-weight: normal;
+    text-transform: none;
 }
 
 /* Mobile first styles */
 @media (max-width: 768px) {
-    /* Stack the text and image vertically on smaller screens */
-    .signature-section-wrapper .flex-wrapper {
+    .signature-content-wrapper {
         flex-direction: column;
         align-items: center;
     }
 
-    /* Allow image to take full width */
-    .signature-section-wrapper .flex-wrapper > div:last-child {
+    .signature-text,
+    .signature-image {
+        width: 100%;
         max-width: 100%;
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .signature-image {
         margin-top: 1rem;
     }
 
-    /* Adjust text size for smaller screens */
     .signature-section-wrapper h1 {
-        font-size: 2rem;
+        font-size: 3.5rem;
+        font-weight: 100;
+        margin-bottom: 1rem;
     }
 
     .signature-section-wrapper h2 {
         font-size: 1.25rem;
+        font-weight: 100;
+        margin-bottom: 1rem;
+    }
+
+    .signature-section-wrapper h2#lorem-ipsum-dolor-tempor {
+        font-size: 2.25rem;
+        font-weight: 200;
+        letter-spacing: 1px;
+    }
+
+    .signature-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signature-links a {
+        margin: 0.5rem 0;
     }
 }
