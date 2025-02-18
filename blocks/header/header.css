@@ -212,12 +212,6 @@ header nav .nav-sections ul > li > ul > li {
     border-width: 2px 2px 0 0;
   }
 
-  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
-  }
-
   header nav .nav-sections ul {
     display: flex;
     gap: 24px;
@@ -234,27 +228,68 @@ header nav .nav-sections ul > li > ul > li {
     position: relative;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+  header nav .nav-sections .default-content-wrapper > ul > li > ul {
     display: block;
-    position: absolute;
-    left: -24px;
-    width: 200px;
-    top: 150%;
-    padding: 16px;
-    background-color: var(--light-color);
+    position: fixed;
+    left: 0;
+    top: 9%;
+    width: 100%;
+    padding: 32px;
+    background-color: var(--background-color);
     white-space: initial;
+    opacity: 0;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+    opacity: 1;
+    visibility: visible;
+    border-top: 1px solid #000000;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0 16px;
+    vertical-align: top;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+    text-align: center;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > .dropdown-container {
+    max-width: 1264px;
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 32px;
+    align-items: center;
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+    visibility: visible;
+    border-top: 1rem;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
     content: '';
     position: absolute;
     top: -8px;
-    left: 16px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 8px solid var(--light-color);
+  }
+
+  header nav .nav-sections .default-content-wrapper > ul > li > ul > .dropdown-container {
+    max-width: 1264px;
+    margin: 0 auto;
+    padding: 0 32px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
