@@ -16,9 +16,6 @@ export default function decorate(block) {
     // Create the flex container for text and image
     const contentWrapper = document.createElement('div');
     contentWrapper.classList.add('signature-content-wrapper');
-    contentWrapper.style.display = 'flex';
-    contentWrapper.style.justifyContent = 'space-between';
-    contentWrapper.style.alignItems = 'center';
 
     // Create the left side (text content)
     const textWrapper = document.createElement('div');
