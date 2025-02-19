@@ -39,6 +39,18 @@
 
   /* nav height */
   --nav-height: 64px;
+
+  /* product showcase sizes */
+  --product-title-font-size: 1rem;
+  --product-price-font-size: 1.1rem;
+  --product-button-font-size: 0.9rem;
+  --product-heading-font-size: 2.3rem;
+  
+  /* mobile product sizes */
+  --product-title-mobile-font-size: 0.85rem;
+  --product-price-mobile-font-size: 0.95rem;
+  --product-button-mobile-font-size: 0.75rem;
+  --product-heading-mobile-font-size: 1.8rem;
 }
 
 /* fallback fonts */

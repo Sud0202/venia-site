@@ -1,23 +1,18 @@
 import { loadCSS, loadScript } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-    
-    // Create wrapper for products
     const productsWrapper = document.createElement('div');
     productsWrapper.classList.add('products-slider');
     
     try {
-        // Load Slick CSS and JS
         await loadCSS('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css');
         await loadCSS('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css');
         await loadScript('https://code.jquery.com/jquery-3.6.0.min.js');
         await loadScript('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js');
 
-        // Fetch products
         const response = await fetch('http://localhost:3000/products.json');
         const data = await response.json();
         
-        // Create product cards
         data.data.forEach(product => {
             const productCard = document.createElement('div');
             productCard.classList.add('product-card');
@@ -41,13 +36,10 @@ export default async function decorate(block) {
             productsWrapper.appendChild(productCard);
         });
         
-        // Clear and add products wrapper to block
         block.textContent = '';
         block.appendChild(productsWrapper);
         
-        // Wait for jQuery to be available
         setTimeout(() => {
-            // Initialize Slick
             if (typeof $ !== 'undefined') {
                 $(productsWrapper).slick({
                     dots: true,
