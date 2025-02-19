@@ -36,7 +36,6 @@
     letter-spacing: 1px;
 }
 
-/* Style for the image section */
 .signature-image {
     flex: 1;
     max-width: 50%;
@@ -69,7 +68,6 @@
     text-transform: none;
 }
 
-/* Mobile first styles */
 @media (max-width: 768px) {
     .signature-content-wrapper {
         flex-direction: column;

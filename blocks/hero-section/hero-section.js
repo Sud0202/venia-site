@@ -19,9 +19,9 @@ export default function decorate(block) {
         const textStartIndex = index * 2;
         
         if (textElements[textStartIndex] && textElements[textStartIndex + 1]) {
-            textContainer.appendChild(textElements[textStartIndex].cloneNode(true));
-            textContainer.appendChild(textElements[textStartIndex + 1].cloneNode(true));
-            textContainer.appendChild(shopNowButton.cloneNode(true));
+            textContainer.appendChild(textElements[textStartIndex]);
+            textContainer.appendChild(textElements[textStartIndex + 1]);
+            textContainer.appendChild(shopNowButton);
         }
 
         slide.appendChild(textContainer);

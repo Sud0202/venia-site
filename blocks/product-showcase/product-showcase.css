@@ -1,4 +1,4 @@
-/* Heading Styles */
+
 h1#top-sellers {
     margin: 2rem 0 4rem;
     font-size: var(--product-heading-font-size);
@@ -8,7 +8,6 @@ h1#top-sellers {
     justify-content: center;
 }
 
-/* Product Card */
 .product-card {
     padding: 1rem;
     display: flex;
@@ -22,7 +21,6 @@ h1#top-sellers {
     object-fit: cover;
 }
 
-/* Product Information */
 .product-info {
     text-align: left;
     flex-grow: 1;
@@ -44,7 +42,6 @@ h1#top-sellers {
     color: rgb(27, 37, 44);
 }
 
-/* Product Actions */
 .product-actions {
     display: flex;
     align-items: center;
@@ -57,7 +54,9 @@ h1#top-sellers {
     color: white;
     font-size: var(--product-button-font-size);
 }
-
+.add-to-cart:hover {
+    background: rgb(126, 201, 255);
+}
 .heart-icon {
     width: 24px;
     height: 24px;
