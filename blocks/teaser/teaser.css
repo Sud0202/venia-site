@@ -1,4 +1,3 @@
-/* Main wrapper */
 .teaser-wrapper {
     display: flex;
     justify-content: center;
@@ -7,7 +6,6 @@
     margin-top: 10rem;
 }
 
-/* Teaser block */
 .teaser {
     display: flex;
     gap: 2%;
@@ -18,7 +16,6 @@
     width: 100%;
 }
 
-/* Individual teaser item */
 .teaser > div {
     position: relative;
     flex: 1 1 30%; 
@@ -39,7 +36,6 @@
     object-fit: cover;
 }
 
-/* Text overlay */
 .teaser > div > div:nth-child(2) {
     position: absolute;
     top: 15%;
@@ -55,7 +51,7 @@
 .teaser h2 {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    font-weight: 100;
+    font-weight: 600;
 }
 
 .teaser p {
@@ -63,7 +59,6 @@
     margin: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 1024px) {
     .teaser {
         gap: 1rem;

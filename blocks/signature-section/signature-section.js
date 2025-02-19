@@ -1,7 +1,7 @@
 export default function decorate(block) {
     const images = [...block.children].filter(child => child.querySelector('picture'));
     const textContent = [...block.children].filter(child => !child.querySelector('picture'));
-
+    console.log(textContent);
     const title = textContent[0] || null;
     const subtitle = textContent[1] || null;
     const description = textContent[2] || null;
@@ -16,39 +16,18 @@ export default function decorate(block) {
     const textWrapper = document.createElement('div');
     textWrapper.classList.add('signature-text');
 
-    if (title) {
-        const titleElement = title.cloneNode(true);
-        textWrapper.appendChild(titleElement);
-    }
-
-    if (subtitle) {
-        const subtitleElement = subtitle.cloneNode(true);
-        textWrapper.appendChild(subtitleElement);
-    }
-
-    if (description) {
-        const descriptionElement = description.cloneNode(true);
-        textWrapper.appendChild(descriptionElement);
-    }
+    textWrapper.appendChild(title);
+    textWrapper.appendChild(subtitle);
+    textWrapper.appendChild(description);
 
     const linksContainer = document.createElement('div');
     linksContainer.classList.add('signature-links');
-    links.forEach(linkElement => {
-        const linkClone = linkElement.cloneNode(true);
-        linksContainer.appendChild(linkClone);
-    });
+    linksContainer.appendChild(links[0]);
     textWrapper.appendChild(linksContainer);
 
     const imageWrapper = document.createElement('div');
     imageWrapper.classList.add('signature-image');
-
-    if (images.length > 0) {
-        images.forEach(image => {
-            const imageClone = image.cloneNode(true);
-            imageWrapper.appendChild(imageClone);
-        });
-    }
-
+    imageWrapper.appendChild(images[0]);
     contentWrapper.appendChild(textWrapper);
     contentWrapper.appendChild(imageWrapper);
 
