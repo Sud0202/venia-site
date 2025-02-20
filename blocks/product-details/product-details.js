@@ -1,154 +1,154 @@
-export default function decorate(block) {
+function setupProductDisplay(mainImageContainer, thumbnailsContainer) {
+    const productDisplay = document.createElement('div');
+    productDisplay.classList.add('product-display');
 
-    const container = createContainer();
+    const mainImage = mainImageContainer.cloneNode(true);
+    mainImage.classList.add('main-image');
 
-    const gallerySection = createGallerySection(block);
+    const thumbnailsWrapper = thumbnailsContainer.cloneNode(true);
+    thumbnailsWrapper.classList.add('thumbnails-wrapper');
     
-    const productInfo = createProductInfo(block);
-    
-    assembleAndRender(container, gallerySection, productInfo, block);
-}
-
-function createContainer() {
-    const container = document.createElement('div');
-    container.className = 'product-details-wrapper';
-    return container;
-}
-
-function createGallerySection(block) {
-    const gallerySection = document.createElement('div');
-    gallerySection.className = 'gallery-section';
-
-    const { thumbnailsContainer, mainImageContainer } = createImageContainers(block);
-    
-    gallerySection.appendChild(thumbnailsContainer);
-    gallerySection.appendChild(mainImageContainer);
-    
-    return gallerySection;
-}
-
-function createImageContainers(block) {
-    const thumbnailsContainer = document.createElement('div');
-    thumbnailsContainer.className = 'thumbnails-container';
-
-    const mainImageContainer = document.createElement('div');
-    mainImageContainer.className = 'main-image-container';
-
-    const mainImage = block.children[0].querySelector('picture');
-    mainImageContainer.appendChild(mainImage);
-
-    const additionalImages = [...block.children[1].children];
-    additionalImages.forEach((imgDiv) => {
-        const thumbnailWrapper = document.createElement('div');
-        thumbnailWrapper.className = 'thumbnail';
-        thumbnailWrapper.appendChild(imgDiv.querySelector('picture'));
-        thumbnailsContainer.appendChild(thumbnailWrapper);
+    [...thumbnailsWrapper.children].forEach((thumb, index) => {
+        thumb.classList.add('thumbnail');
+        if (index === 0) thumb.classList.add('active');
+        
+        thumb.addEventListener('click', () => {
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+            mainImage.innerHTML = thumb.innerHTML;
+        });
     });
 
-    return { thumbnailsContainer, mainImageContainer };
+    productDisplay.appendChild(mainImage);
+    productDisplay.appendChild(thumbnailsWrapper);
+    return productDisplay;
 }
 
-function createProductInfo(block) {
-    const productInfo = block.children[2];
-    productInfo.className = 'product-info';
+function setupColorSection(colorSection) {
+    colorSection.classList.add('color-selection');
+    const colorHeader = colorSection.children[0];
+    const colorOptions = colorSection.children[1];
+    colorOptions.classList.add('color-options');
 
-    const titlePriceDiv = createTitlePriceSection(productInfo);
-    const optionsSection = createOptionsSection();
+    const selectedColorText = colorHeader.querySelector('p');
+    colorHeader.removeChild(selectedColorText);
+    colorOptions.insertAdjacentElement('afterend', selectedColorText);
 
-    productInfo.textContent = '';
-    productInfo.appendChild(titlePriceDiv);
-    productInfo.appendChild(optionsSection);
+    const colorMap = {
+        'Peach': '#fee1d2',
+        'Khaki': '#f9efe5',
+        'Rain': '#d4e3ec',
+        'Mint': '#d8f0d8'
+    };
 
-    return productInfo;
+    [...colorOptions.children].forEach(colorText => {
+        const colorName = colorText.textContent.trim();
+        const colorBox = document.createElement('div');
+        colorBox.classList.add('color-box');
+        colorBox.style.backgroundColor = colorMap[colorName];
+        colorBox.setAttribute('data-color', colorName);
+        
+        colorBox.addEventListener('click', () => {
+            document.querySelectorAll('.color-box').forEach(box => box.classList.remove('selected'));
+            colorBox.classList.add('selected');
+            selectedColorText.textContent = `Selected Fashion Color: ${colorName}`;
+        });
+        
+        colorOptions.replaceChild(colorBox, colorText);
+    });
 }
 
-function createTitlePriceSection(productInfo) {
-    const titlePriceDiv = document.createElement('div');
-    const title = productInfo.querySelector('h2');
-    const price = productInfo.querySelector('p');
-    titlePriceDiv.appendChild(title);
-    titlePriceDiv.appendChild(price);
-    return titlePriceDiv;
+function setupSizeSection(sizeSection) {
+    sizeSection.classList.add('size-selection');
+    const sizeHeader = sizeSection.children[0];
+    const sizeOptions = sizeSection.children[1];
+    sizeOptions.classList.add('size-options');
+
+    const selectedSizeText = sizeHeader.querySelector('h2#selected-fashion-size-none');
+    sizeHeader.removeChild(selectedSizeText);
+    sizeOptions.insertAdjacentElement('afterend', selectedSizeText);
+
+    const sizesText = sizeOptions.querySelector('p').textContent;
+    const sizes = sizesText.split(' ').filter(Boolean);
+
+    sizeOptions.innerHTML = '';
+
+    sizes.forEach(size => {
+        const sizeBox = document.createElement('div');
+        sizeBox.classList.add('size-box');
+        sizeBox.textContent = size;
+        
+        sizeBox.addEventListener('click', () => {
+            document.querySelectorAll('.size-box').forEach(box => box.classList.remove('selected'));
+            sizeBox.classList.add('selected');
+            selectedSizeText.textContent = `Selected Fashion Size: ${size}`;
+        });
+        
+        sizeOptions.appendChild(sizeBox);
+    });
 }
 
-function createOptionsSection() {
-    const optionsSection = document.createElement('div');
-    optionsSection.className = 'product-options';
+function setupQuantitySection(quantitySection) {
+    quantitySection.classList.add('quantity-section');
+    const quantityControls = quantitySection.children[1];
+    quantityControls.classList.add('quantity-controls');
 
-    optionsSection.appendChild(createColorSection());
-    optionsSection.appendChild(createSizeSection());
-    optionsSection.appendChild(createQuantitySection());
-    optionsSection.appendChild(createCartSection());
+    const [minus, value, plus] = quantityControls.textContent.trim().split(' ');
 
-    return optionsSection;
-}
-
-function createColorSection() {
-    const section = document.createElement('div');
-    section.className = 'option-section';
-    section.innerHTML = `
-        <h3>Fashion Color</h3>
-        <div class="color-options">
-            <button class="color-btn peach selected"></button>
-            <button class="color-btn cream"></button>
-            <button class="color-btn blue"></button>
-            <button class="color-btn mint"></button>
-        </div>
+    quantityControls.innerHTML = `
+        <button class="rounded-btn minus">${minus}</button>
+        <input type="text" value="${value}" class="squared-input">
+        <button class="rounded-btn plus">${plus}</button>
     `;
-    return section;
+
+    const quantityInput = quantityControls.querySelector('.squared-input');
+    quantityControls.querySelector('.minus').addEventListener('click', () => {
+        const currentValue = parseInt(quantityInput.value);
+        if (currentValue > 1) quantityInput.value = currentValue - 1;
+    });
+    quantityControls.querySelector('.plus').addEventListener('click', () => {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
 }
 
-function createSizeSection() {
-    const section = document.createElement('div');
-    section.className = 'option-section';
-    section.innerHTML = `
-        <h3>Fashion Size</h3>
-        <div class="size-options">
-            <button class="size-btn selected">XS</button>
-            <button class="size-btn">M</button>
-            <button class="size-btn">S</button>
-            <button class="size-btn">L</button>
-        </div>
-    `;
-    return section;
+function setupActionButtons(actionSection) {
+    actionSection.classList.add('action-buttons');
+    
+    const addToCartButton = actionSection.children[0].querySelector('h2');
+    addToCartButton.classList.add('add-to-cart-button');
+
+    const favoritesButton = actionSection.children[1].querySelector('p');
+    favoritesButton.classList.add('favorite-button');
+
+    addToCartButton.addEventListener('click', () => {
+        console.log('Add to cart clicked');
+    });
+
+    favoritesButton.addEventListener('click', () => {
+        console.log('Add to favorites clicked');
+    });
 }
 
-function createQuantitySection() {
-    const section = document.createElement('div');
-    section.className = 'option-section';
-    section.innerHTML = `
-        <h3>Quantity</h3>
-        <div class="quantity-selector">
-            <button class="quantity-btn minus">−</button>
-            <input type="text" value="1" readonly>
-            <button class="quantity-btn plus">+</button>
-        </div>
-    `;
-    return section;
-}
+export default function decorate(block) {
+    const [mainImageContainer, thumbnailsContainer, titleSection, colorSection, sizeSection, quantitySection, actionSection] = block.children;
+    
+    const productDisplay = setupProductDisplay(mainImageContainer, thumbnailsContainer);
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
 
-function createCartSection() {
-    const section = document.createElement('div');
-    section.className = 'option-section';
-    section.innerHTML = `
-        <div class="cart-button-pdp-container">
-            <div class="cart-button-pdp">
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <div class="favorite-button-pdp">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                </svg>
-                <p>Add to Favorite</p>
-            </div>
-        </div>
-    `;
-    return section;
-}
+    titleSection.classList.add('title-price');
+    setupColorSection(colorSection);
+    setupSizeSection(sizeSection);
+    setupQuantitySection(quantitySection);
+    setupActionButtons(actionSection);
 
-function assembleAndRender(container, gallerySection, productInfo, block) {
-    container.appendChild(gallerySection);
-    container.appendChild(productInfo);
-    block.textContent = '';
-    block.appendChild(container);
+    productInfo.appendChild(titleSection);
+    productInfo.appendChild(colorSection);
+    productInfo.appendChild(sizeSection);
+    productInfo.appendChild(quantitySection);
+    productInfo.appendChild(actionSection);
+
+    block.innerHTML = '';
+    block.appendChild(productDisplay);
+    block.appendChild(productInfo);
 }
