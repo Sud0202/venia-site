@@ -69,7 +69,7 @@ function setupSizeSection(sizeSection) {
     sizeOptions.insertAdjacentElement('afterend', selectedSizeText);
 
     const sizesText = sizeOptions.querySelector('p').textContent;
-    const sizes = sizesText.split(' ').filter(Boolean);
+    const sizes = sizesText.split(' ');
 
     sizeOptions.innerHTML = '';
 
