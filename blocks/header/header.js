@@ -125,7 +125,45 @@ export default async function decorate(block) {
     if (section) section.classList.add(`nav-${c}`);
   });
 
+  // Add new code for nav-tools wrapper
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const toolsWrapper = document.createElement('div');
+    toolsWrapper.className = 'nav-tools-wrapper';
+    
+    // Move all direct children from default-content-wrapper to the new wrapper
+    const defaultWrapper = navTools.querySelector('.default-content-wrapper');
+    if (defaultWrapper) {
+      while (defaultWrapper.firstElementChild) {
+        const element = defaultWrapper.firstElementChild;
+        // Wrap text nodes in spans for search item
+        if (element.querySelector('.icon-search')) {
+          const text = element.childNodes[1];
+          const span = document.createElement('span');
+          span.textContent = text.textContent;
+          text.replaceWith(span);
+        }
+        toolsWrapper.appendChild(element);
+      }
+      defaultWrapper.appendChild(toolsWrapper);
+    }
+  }
+
   const navBrand = nav.querySelector('.nav-brand');
+  if (navBrand) {
+    const brandWrapper = document.createElement('div');
+    brandWrapper.className = 'nav-brand-wrapper';
+    
+    // Move all direct children from default-content-wrapper to the new wrapper
+    const defaultWrapper = navBrand.querySelector('.default-content-wrapper');
+    if (defaultWrapper) {
+      while (defaultWrapper.firstElementChild) {
+        brandWrapper.appendChild(defaultWrapper.firstElementChild);
+      }
+      defaultWrapper.appendChild(brandWrapper);
+    }
+  }
+
   const brandLink = navBrand.querySelector('.button');
   if (brandLink) {
     brandLink.className = '';

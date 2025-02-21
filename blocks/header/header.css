@@ -127,7 +127,14 @@ header nav[aria-expanded='true'] .nav-hamburger-icon::after {
   bottom: 3px;
   transform: rotate(-45deg);
 }
-
+.nav-brand .nav-brand-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon-VeniaLogo{
+  width: 128px;
+}
 @media (width >= 900px) {
   header nav .nav-hamburger {
     display: none;
@@ -144,6 +151,11 @@ header .nav-brand {
   line-height: 1;
 }
 
+.nav-brand .nav-brand-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 header nav .nav-brand img {
   width: 128px;
   height: auto;
@@ -152,9 +164,10 @@ header nav .nav-brand img {
 /* sections */
 header nav .nav-sections {
   grid-area: sections;
-  flex: 1 2 auto;
+  flex: 1 1 auto;
   display: none;
   visibility: hidden;
+  
 }
 
 header nav[aria-expanded='true'] .nav-sections {
@@ -162,6 +175,7 @@ header nav[aria-expanded='true'] .nav-sections {
   visibility: visible;
   align-self: start;
 }
+
 
 header nav .nav-sections ul {
   list-style: none;
@@ -180,12 +194,16 @@ header nav .nav-sections ul > li > ul {
 header nav .nav-sections ul > li > ul > li {
   font-weight: 400;
 }
+header nav[aria-expanded='true'] .nav-sections {
+  display: block;
+
+}
 
 @media (width >= 900px) {
   header nav .nav-sections {
     display: block;
     visibility: visible;
-    align-self: center;
+    white-space: nowrap;
   }
 
   header nav[aria-expanded='true'] .nav-sections {
@@ -212,17 +230,16 @@ header nav .nav-sections ul > li > ul > li {
     border-width: 2px 2px 0 0;
   }
 
-  header nav .nav-sections ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    margin: 0 auto;
+  header nav .nav-sections .nav-drop[aria-expanded='true']::after {
+    top: unset;
+    bottom: 0.5em;
+    transform: rotate(315deg);
   }
 
-  header nav .nav-sections ul > li {
-    padding: 0 12px;
+  header nav .nav-sections ul {
+    display: flex;
+    gap: 24px;
+    margin: 0;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li {
@@ -235,57 +252,22 @@ header nav .nav-sections ul > li > ul > li {
     position: relative;
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
     display: block;
-    position: fixed;
-    left: 0;
-    top: 9%;
-    width: 100%;
-    padding: 32px;
-    background-color: var(--background-color);
+    position: absolute;
+    left: -24px;
+    width: 200px;
+    top: 150%;
+    padding: 16px;
+    background-color: var(--light-color);
     white-space: initial;
-    opacity: 0;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    opacity: 1;
-    visibility: visible;
-    border-top: 1px solid #000000;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    display: inline-block;
-    padding: 12px 24px;
-    margin: 0 16px;
-    vertical-align: top;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul {
-    text-align: center;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .dropdown-container {
-    max-width: 1264px;
-    margin: 0 auto;
-    padding: 0 32px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 32px;
-    align-items: center;
-  }
-
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
-    visibility: visible;
-    border-top: 1rem;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
     content: '';
     position: absolute;
     top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 16px;
     width: 0;
     height: 0;
     border-left: 8px solid transparent;
@@ -293,55 +275,48 @@ header nav .nav-sections ul > li > ul > li {
     border-bottom: 8px solid var(--light-color);
   }
 
-  header nav .nav-sections .default-content-wrapper > ul > li > ul > .dropdown-container {
-    max-width: 1264px;
-    margin: 0 auto;
-    padding: 0 32px;
-  }
-
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
     padding: 8px 0;
   }
 }
-/* brand */
-header .nav-brand {
-  grid-area: brand;
-  flex-basis: 128px;
-  font-size: var(--heading-font-size-s);
-  font-weight: 700;
-  line-height: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-header nav .nav-brand img {
-  width: 128px;
-  height: auto;
-}
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
 }
 
-/* Add these new styles */
-header nav .nav-tools .default-content-wrapper {
+.nav-tools .nav-tools-wrapper {
   display: flex;
-  gap: 20px;
   align-items: center;
+  gap: 10px;
 }
 
-header nav .nav-tools .default-content-wrapper p {
+.nav-tools .nav-tools-wrapper p {
   margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
 }
 
-header nav .nav-tools .icon img {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-}
-.icon.icon-VeniaLogo {
-  width: auto;
+/* Add these new mobile-specific styles */
+@media (width < 900px) {
+  /* Hide "Search" text in mobile */
+  .nav-tools .icon-search + span,
+  .nav-tools p:has(.icon-search)::after {
+    display: none;
+  }
+
+  /* Hide both icon and text for sign in in mobile */
+  .nav-tools p:has(.icon-signin) {
+    display: none;
+  }
 }
 
-
+/* Show everything in desktop */
+@media (width >= 900px) {
+  .nav-tools p:has(.icon-signin),
+  .nav-tools .icon-search + span {
+    display: flex;
+  }
+}
