@@ -19,7 +19,7 @@ export default async function decorate(block) {
 }
 
 async function fetchProductsData() {
-    const response = await fetch('http://localhost:3000/products.json');
+    const response = await fetch('http://localhost:3000/query-index.json');
     return await response.json();
 }
 
@@ -57,7 +57,7 @@ function initializeSlickSlider(productsWrapper) {
                 dotsClass: 'custom-slick-dots',
                 responsive: [
                     {
-                        breakpoint: 1024,
+                        breakpoint: 900 ,
                         settings: {
                             slidesToShow: 3,
                             slidesToScroll: 3,
@@ -73,7 +73,7 @@ function initializeSlickSlider(productsWrapper) {
                         }
                     },
                     {
-                        breakpoint: 480,
+                        breakpoint: 300,
                         settings: {
                             slidesToShow: 1,
                             slidesToScroll: 1

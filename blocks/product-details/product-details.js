@@ -8,15 +8,8 @@ function setupProductDisplay(mainImageContainer, thumbnailsContainer) {
     const thumbnailsWrapper = thumbnailsContainer.cloneNode(true);
     thumbnailsWrapper.classList.add('thumbnails-wrapper');
     
-    [...thumbnailsWrapper.children].forEach((thumb, index) => {
+    [...thumbnailsWrapper.children].forEach(thumb => {
         thumb.classList.add('thumbnail');
-        if (index === 0) thumb.classList.add('active');
-        
-        thumb.addEventListener('click', () => {
-            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
-            mainImage.innerHTML = thumb.innerHTML;
-        });
     });
 
     productDisplay.appendChild(mainImage);
@@ -48,12 +41,6 @@ function setupColorSection(colorSection) {
         colorBox.style.backgroundColor = colorMap[colorName];
         colorBox.setAttribute('data-color', colorName);
         
-        colorBox.addEventListener('click', () => {
-            document.querySelectorAll('.color-box').forEach(box => box.classList.remove('selected'));
-            colorBox.classList.add('selected');
-            selectedColorText.textContent = `Selected Fashion Color: ${colorName}`;
-        });
-        
         colorOptions.replaceChild(colorBox, colorText);
     });
 }
@@ -77,13 +64,6 @@ function setupSizeSection(sizeSection) {
         const sizeBox = document.createElement('div');
         sizeBox.classList.add('size-box');
         sizeBox.textContent = size;
-        
-        sizeBox.addEventListener('click', () => {
-            document.querySelectorAll('.size-box').forEach(box => box.classList.remove('selected'));
-            sizeBox.classList.add('selected');
-            selectedSizeText.textContent = `Selected Fashion Size: ${size}`;
-        });
-        
         sizeOptions.appendChild(sizeBox);
     });
 }
@@ -100,33 +80,10 @@ function setupQuantitySection(quantitySection) {
         <input type="text" value="${value}" class="squared-input">
         <button class="rounded-btn plus">${plus}</button>
     `;
-
-    const quantityInput = quantityControls.querySelector('.squared-input');
-    quantityControls.querySelector('.minus').addEventListener('click', () => {
-        const currentValue = parseInt(quantityInput.value);
-        if (currentValue > 1) quantityInput.value = currentValue - 1;
-    });
-    quantityControls.querySelector('.plus').addEventListener('click', () => {
-        quantityInput.value = parseInt(quantityInput.value) + 1;
-    });
 }
 
 function setupActionButtons(actionSection) {
     actionSection.classList.add('action-buttons');
-    
-    const addToCartButton = actionSection.children[0].querySelector('h2');
-    addToCartButton.classList.add('add-to-cart-button');
-
-    const favoritesButton = actionSection.children[1].querySelector('p');
-    favoritesButton.classList.add('favorite-button');
-
-    addToCartButton.addEventListener('click', () => {
-        console.log('Add to cart clicked');
-    });
-
-    favoritesButton.addEventListener('click', () => {
-        console.log('Add to favorites clicked');
-    });
 }
 
 export default function decorate(block) {

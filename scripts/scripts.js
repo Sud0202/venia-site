@@ -10,7 +10,9 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata,
 } from './aem.js';
+import { createBreadcrumb } from '../blocks/breadcrumb/breadcrumb.js';
 
 
 /**
@@ -25,13 +27,23 @@ async function loadFonts() {
   }
 }
 
+function buildBreadcrumb() {
+  // Only create breadcrumb if it doesn't exist
+  if (!document.querySelector('.breadcrumb')) {
+    const breadcrumb = createBreadcrumb();
+    if (breadcrumb) {
+      document.querySelector('main').prepend(breadcrumb);
+    }
+  }
+}
+
 /**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
 function buildAutoBlocks(main) {
   try {
-    
+    buildBreadcrumb();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
