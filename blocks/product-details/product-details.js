@@ -20,11 +20,12 @@ function setupProductDisplay(mainImageContainer, thumbnailsContainer) {
 function setupColorSection(colorSection) {
     colorSection.classList.add('color-selection');
     const colorHeader = colorSection.children[0];
+    console.log(colorHeader)
     const colorOptions = colorSection.children[1];
+    console.log(colorOptions)
     colorOptions.classList.add('color-options');
 
     const selectedColorText = colorHeader.querySelector('p');
-    colorHeader.removeChild(selectedColorText);
     colorOptions.insertAdjacentElement('afterend', selectedColorText);
 
     const colorMap = {
@@ -35,7 +36,7 @@ function setupColorSection(colorSection) {
     };
 
     [...colorOptions.children].forEach(colorText => {
-        const colorName = colorText.textContent.trim();
+        const colorName = colorText.textContent;
         const colorBox = document.createElement('div');
         colorBox.classList.add('color-box');
         colorBox.style.backgroundColor = colorMap[colorName];
@@ -85,10 +86,8 @@ function setupQuantitySection(quantitySection) {
 function setupActionButtons(actionSection) {
     actionSection.classList.add('action-buttons');
 }
-
 export default function decorate(block) {
     const [mainImageContainer, thumbnailsContainer, titleSection, colorSection, sizeSection, quantitySection, actionSection] = block.children;
-    
     const productDisplay = setupProductDisplay(mainImageContainer, thumbnailsContainer);
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
@@ -104,6 +103,7 @@ export default function decorate(block) {
     productInfo.appendChild(sizeSection);
     productInfo.appendChild(quantitySection);
     productInfo.appendChild(actionSection);
+    
 
     block.innerHTML = '';
     block.appendChild(productDisplay);
