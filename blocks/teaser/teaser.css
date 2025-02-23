@@ -1,25 +1,25 @@
+/* Base mobile styles (below 360px) */
 .teaser-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
-    margin-top: 10rem;
+    padding: 1rem;
+    margin-top: 5rem;
 }
 
 .teaser {
     display: flex;
-    gap: 2%;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    max-width: 90%;
+    gap: 1rem;
+    max-width: 100%;
     width: 100%;
 }
 
 .teaser > div {
     position: relative;
-    flex: 1 1 30%; 
-    max-width: 35%;
+    width: 100%;
+    max-width: 100%;
     overflow: hidden;
 }
 
@@ -43,60 +43,103 @@
     transform: translate(-50%, -50%);
     text-align: center;
     color: white;
-    padding: 1rem;
-    width: 80%;
+    padding: 0.8rem;
+    width: 90%;
     border-radius: 0.5rem;
 }
 
 .teaser h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
 }
 
 .teaser p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin: 0;
 }
 
-@media (max-width: 1024px) {
+/* Mobile styles (360px and up) */
+@media (width >= 360px) {
+    .teaser-wrapper {
+        padding: 1.5rem;
+        margin-top: 6rem;
+    }
+
     .teaser {
-        gap: 1rem;
+        gap: 1.2rem;
+        max-width: 95%;
+    }
+
+    .teaser > div {
+        max-width: 95%;
+    }
+
+    .teaser h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .teaser p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet styles (600px and up) */
+@media (width >= 600px) {
+    .teaser-wrapper {
+        padding: 1.8rem;
+        margin-top: 8rem;
+    }
+
+    .teaser {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
     }
 
     .teaser > div {
         flex: 1 1 45%;
         max-width: 48%;
     }
-}
 
-@media (max-width: 768px) {
-    .teaser {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+    .teaser h2 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
     }
 
-    .teaser > div {
+    .teaser p {
+        font-size: 0.95rem;
+    }
+}
+
+/* Desktop styles (900px and up) */
+@media (width >= 900px) {
+    .teaser-wrapper {
+        padding: 2rem;
+        margin-top: 10rem;
+    }
+
+    .teaser {
+        gap: 2%;
         max-width: 90%;
     }
 
-    .teaser > div > div:nth-child(2) {
-        width: 90%;
-        padding: 0.8rem;
+    .teaser > div {
+        flex: 1 1 30%;
+        max-width: 35%;
     }
-}
 
-@media (max-width: 480px) {
-    .teaser-wrapper {
+    .teaser > div > div:nth-child(2) {
+        width: 80%;
         padding: 1rem;
     }
 
     .teaser h2 {
-        font-size: 1.2rem;
+        font-size: 2.5rem;
     }
 
     .teaser p {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 }
