@@ -87,10 +87,7 @@ h1#top-sellers {
 }
 
 .custom-slick-dots li button {
-    width: 15px;
-    height: 15px;
     background: transparent;
-    padding: 0;
 }
 
 .custom-slick-dots li button:before {

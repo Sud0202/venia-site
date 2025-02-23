@@ -136,14 +136,23 @@ export default async function decorate(block) {
     if (defaultWrapper) {
       while (defaultWrapper.firstElementChild) {
         const element = defaultWrapper.firstElementChild;
-        // Wrap text nodes in spans for search item
+        // Wrap search icon and text in an anchor tag
         if (element.querySelector('.icon-search')) {
-          const text = element.childNodes[1];
-          const span = document.createElement('span');
-          span.textContent = text.textContent;
-          text.replaceWith(span);
+          const link = document.createElement('a');
+          link.href = '/search'; // Add appropriate href
+          link.className = 'search-link';
+          const icon = element.querySelector('.icon-search');
+        
+          link.appendChild(icon);
+          toolsWrapper.appendChild(link);
+          
+          // Move the existing Search text p tag after the link
+          if (element.nextElementSibling && element.nextElementSibling.textContent === 'Search') {
+            toolsWrapper.appendChild(element.nextElementSibling);
+          }
+        } else {
+          toolsWrapper.appendChild(element);
         }
-        toolsWrapper.appendChild(element);
       }
       defaultWrapper.appendChild(toolsWrapper);
     }
@@ -173,14 +182,19 @@ export default async function decorate(block) {
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
     navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((navSection) => {
-      if (navSection.querySelector('ul')) navSection.classList.add('nav-drop');
-      navSection.addEventListener('click', () => {
-        if (isDesktop.matches) {
-          const expanded = navSection.getAttribute('aria-expanded') === 'true';
-          toggleAllNavSections(navSections);
-          navSection.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-        }
-      });
+      const hasDropdown = navSection.querySelector('ul');
+      if (hasDropdown) {
+        navSection.classList.add('nav-drop');
+        navSection.setAttribute('aria-expanded', 'false');
+        
+        navSection.addEventListener('mouseenter', () => {
+          if (isDesktop.matches) {
+            const allDropdowns = navSections.querySelectorAll('.nav-drop');
+            allDropdowns.forEach(drop => drop.setAttribute('aria-expanded', 'false'));
+            navSection.setAttribute('aria-expanded', 'true');
+          }
+        });
+      }
     });
   }
 

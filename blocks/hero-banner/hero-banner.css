@@ -1,7 +1,7 @@
-.hero-section{
+.hero-banner{
   margin-top: 2%;
 }
-.carousel {
+.hero-carousel {
   position: relative;
   width: 100%;
   height: 30vh;
@@ -9,21 +9,21 @@
   z-index: 1; 
 }
 
-.slides-wrapper {
+.hero-slides-wrapper {
   position: relative;
   width: 100%;
   height: 95%;
   overflow: hidden;
 }
 
-.carousel-section {
+.hero-carousel-section {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 3%;
 }
 
-.slide {
+.hero-slide {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -35,25 +35,25 @@
   z-index: 1;
 }
 
-.slide.active {
+.hero-slide.active {
   opacity: 1;
   transform: translateX(0);
   z-index: 2;
 }
 
-.slide.prev {
+.hero-slide.prev {
   transform: translateX(-100%);
   opacity: 0;
   z-index: 1;
 }
 
-.slide img {
+.hero-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.hero-text {
+.hero-slide-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -64,20 +64,20 @@
   z-index: 2;
 }
 
-.hero-text h1 {
+.hero-slide-text h1 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   font-weight: 100;
   color: var(--text-color);
 }
 
-.hero-text p {
+.hero-slide-text p {
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   color: var(--text-color);
 }
 
-.hero-text a.button:any-link {
+.hero-slide-text a.button:any-link {
   padding: 0;
   margin: 0;
   background: none;
@@ -87,7 +87,7 @@
   text-decoration: underline;
 }
 
-.carousel-indicators {
+.hero-carousel-indicators {
   display: flex;
   gap: 12px;
   justify-content: center;
@@ -95,7 +95,7 @@
   margin: 0;
 }
 
-.indicator {
+.hero-indicator {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -104,30 +104,30 @@
   transition: all 0.3s ease;
 }
 
-.indicator.active {
+.hero-indicator.active {
   background-color: #000000;
   transform: scale(1.2);
 }
 
-@media (min-width: 900px) {
-  .hero-text {
-      left: 5%;
-      transform: translateY(-60%);
-      text-align: center;
-      width: 40%;
-      gap: 25px;
+@media (width >= 900px) {
+  .hero-carousel-section {
+    gap: 0;
   }
 
-  .hero-text h1 {
-      font-size: 3.5rem;
-      font-weight: 100;
+  .hero-slide-text {
+    left: 5%;
+    transform: translateY(-60%);
+    text-align: center;
+    width: 40%;
+    gap: 25px;
   }
 
-  .hero-text p {
-      font-size: 1rem;
+  .hero-slide-text h1 {
+    font-size: 3.5rem;
+    font-weight: 100;
   }
 
-  .carousel-section {
-      gap: 0; 
+  .hero-slide-text p {
+    font-size: 1rem;
   }
 }

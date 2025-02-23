@@ -5,10 +5,10 @@ function createBreadcrumbHTML(breadcrumbData) {
     console.log(paths)
     return paths.map((path, index) => {
         if (index === paths.length - 1) {
-            return `<span class="breadcrumb-item current">${path}</span>`;
+            return `<span class="breadcrumb-item">${path}</span>`;
         }
-        return `<span class="breadcrumb-item"><a href="#">${path}</a></span>`;
-    }).join('<span class="breadcrumb-separator">/</span>');
+        return `<span class="breadcrumb-item"><a href="/${path}">${path}</a></span>`;
+    }).join('<span class="breadcrumb-separator"> / </span> ');
 }
 
 export function createBreadcrumb() {
@@ -20,16 +20,3 @@ export function createBreadcrumb() {
     breadcrumb.innerHTML = createBreadcrumbHTML(breadcrumbData);
     return breadcrumb;
 }
-
-// This is for when breadcrumb is used as a block
-export default function decorate(block) {
-    const breadcrumbData = getMetadata('breadcrumb');
-    if (!breadcrumbData) {
-        block.style.display = 'none';
-        return;
-    }
-    
-    block.classList.add('breadcrumb');
-    block.innerHTML = createBreadcrumbHTML(breadcrumbData);
-}
-

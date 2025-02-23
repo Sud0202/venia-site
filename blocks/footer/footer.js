@@ -17,4 +17,21 @@ export default async function decorate(block) {
   while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
 
   block.append(footer);
+  
+  // After footer is loaded, find and replace the input text with input element
+  const allLis = block.querySelectorAll('li');
+  allLis.forEach(li => {
+    if (li.textContent.trim().toLowerCase() === 'input') {
+      const inputElement = document.createElement('input');
+      inputElement.type = 'email';
+      inputElement.placeholder = 'Subscribe';
+      inputElement.className = 'footer-subscribe-input';
+      
+      const containerLi = document.createElement('li');
+      containerLi.className = 'footer-input-container';
+      containerLi.appendChild(inputElement);
+      
+      li.replaceWith(containerLi);
+    }
+  });
 }
