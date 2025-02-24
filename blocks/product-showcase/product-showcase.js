@@ -45,11 +45,8 @@ function createProductCard(product) {
 }
 
 function initializeSlickSlider(productsWrapper) {
-    setTimeout(() => {
-        if (typeof $ !== 'undefined') {
             $(productsWrapper).slick({
                 dots: true,
-                arrows: false,
                 infinite: false,
                 speed: 300,
                 slidesToShow: 4,
@@ -81,6 +78,4 @@ function initializeSlickSlider(productsWrapper) {
                     }
                 ]
             });
-        }
-    }, 1000);
 }

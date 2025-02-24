@@ -37,7 +37,7 @@
   --control-size-large: 48px;
   
   /* shadows */
-  --thumbnail-shadow: 0 0 10px rgba(96 165 250);
+  --thumbnail-shadow: 0 0 10px rgb(31, 132, 255);
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;

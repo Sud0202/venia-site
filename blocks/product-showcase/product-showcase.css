@@ -147,24 +147,24 @@ h1#top-sellers {
 }
 
 @media (width >= 900px) {
-    .product-showcase-heading {
-        margin: 2rem 0 4rem;
-        font-size: var(--heading-font-size-xl);
-    }
-
     .product-title {
         font-size: var(--heading-font-size-xs);
+        margin: 0;
+        margin-bottom: 3%;
     }
 
     .product-price {
         font-size: var(--heading-font-size-xs);
+        font-weight: 300;
+        margin: 0;
     }
 
     .add-to-cart {
-        padding: 0.5rem 2.9rem;
+        padding: 0.3rem 2.5rem;
+        font-size: var(--heading-font-size-xs);
     }
     .add-to-cart:hover{
-        background:var(--link-color);
+        background:var(--text-color);
     }
 
     .heart-icon {
