@@ -18,6 +18,26 @@
   --text-color: #131313;
   --link-color: #3b63fb;
 
+  /* Add new variables */
+  --border-color: #e0e0e0;
+  --button-background: rgb(190, 190, 190);
+  --button-text: white;
+  --border-radius-small: 4px;
+  --border-radius-large: 50px;
+  --border-width: 1.5px;
+  
+  /* spacing */
+  --gap-small: 0.8rem;
+  --gap-medium: 1rem;
+  --gap-large: 1.2rem;
+  
+  /* box dimensions */
+  --control-size-small: 39px;
+  --control-size-medium: 44px;
+  --control-size-large: 48px;
+  
+  /* shadows */
+  --thumbnail-shadow: 0 0 10px rgba(96 165 250);
 
   /* fonts */
   --body-font-family: roboto, roboto-fallback, sans-serif;
@@ -51,6 +71,25 @@
   --product-price-mobile-font-size: 0.95rem;
   --product-button-mobile-font-size: 0.75rem;
   --product-heading-mobile-font-size: 1.8rem;
+
+  /* heading sizes for different screens */
+  --heading-mobile-size-xl: 1.8rem;
+  --heading-mobile-size-l: 1.5rem;
+  --heading-mobile-size-m: 1.3rem;
+  --heading-mobile-size-s: 1.2rem;
+  --heading-mobile-size-xs: 1.1rem;
+
+  --heading-tablet-size-xl: 2rem;
+  --heading-tablet-size-l: 1.8rem;
+  --heading-tablet-size-m: 1.5rem;
+  --heading-tablet-size-s: 1.3rem;
+  --heading-tablet-size-xs: 1.2rem;
+
+  --heading-desktop-size-xl: 2.5rem;
+  --heading-desktop-size-l: 2rem;
+  --heading-desktop-size-m: 1.8rem;
+  --heading-desktop-size-s: 1.5rem;
+  --heading-desktop-size-xs: 1.3rem;
 }
 
 /* fallback fonts */
@@ -243,3 +282,25 @@ main > .section:first-of-type {
     padding: 20px 32px;
   }
 }
+
+/* Update media queries to use new heading size variables */
+@media (width >= 360px) {
+  :root {
+    --heading-font-size-xl: var(--heading-mobile-size-xl);
+    --heading-font-size-l: var(--heading-mobile-size-l);
+    --heading-font-size-m: var(--heading-mobile-size-m);
+    --heading-font-size-s: var(--heading-mobile-size-s);
+    --heading-font-size-xs: var(--heading-mobile-size-xs);
+  }
+}
+
+@media (width >= 600px) {
+  :root {
+    --heading-font-size-xl: var(--heading-tablet-size-xl);
+    --heading-font-size-l: var(--heading-tablet-size-l);
+    --heading-font-size-m: var(--heading-tablet-size-m);
+    --heading-font-size-s: var(--heading-tablet-size-s);
+    --heading-font-size-xs: var(--heading-tablet-size-xs);
+  }
+}
+

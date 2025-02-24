@@ -2,7 +2,6 @@ import { getMetadata } from '../../scripts/aem.js';
 
 function createBreadcrumbHTML(breadcrumbData) {
     const paths = breadcrumbData.split('/');
-    console.log(paths)
     return paths.map((path, index) => {
         if (index === paths.length - 1) {
             return `<span class="breadcrumb-item">${path}</span>`;

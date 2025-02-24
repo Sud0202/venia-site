@@ -1,35 +1,34 @@
 .product-desc {
     display: flex;
     flex-direction: column;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--border-color);
 }
 
 .product-desc > div {
     display: flex;
     flex-direction: column;
-    gap: 10%;
+    gap: var(--gap-large);
 }
 
 .product-desc h2 {
     font-family: var(--heading-font-family);
-    font-size: 1.5rem;
+    font-size: var(--heading-font-size-l);
     font-weight: 500;
 }
 
 .product-desc p {
-    font-size: 1rem;
+    font-size: var(--body-font-size-s);
 }
 
 .product-desc li {
-    font-size: 1rem;
+    font-size: var(--body-font-size-s);
 }
-
 
 @media (width >= 900px) {
     .product-desc > div {
         flex-direction: row;
         width: 90%;
-        gap: 10%;
+        gap: var(--gap-large);
         margin: 0 auto;
     }
 
@@ -38,7 +37,7 @@
     }
 
     .product-desc h2 {
-        font-size: 2rem;
+        font-size: var(--heading-font-size-xl);
     }
 }
 

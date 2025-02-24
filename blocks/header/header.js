@@ -139,7 +139,7 @@ export default async function decorate(block) {
         // Wrap search icon and text in an anchor tag
         if (element.querySelector('.icon-search')) {
           const link = document.createElement('a');
-          link.href = '/search'; // Add appropriate href
+          link.href = '/search'; 
           link.className = 'search-link';
           const icon = element.querySelector('.icon-search');
         

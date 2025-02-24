@@ -86,6 +86,7 @@ function setupActionButtons(actionSection) {
 }
 export default function decorate(block) {
     const sections = [...block.children];
+    console.log(sections)
     const productDisplay = setupProductDisplay(sections[0], sections[1]);
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
@@ -97,7 +98,6 @@ export default function decorate(block) {
     setupActionButtons(sections[6]);
 
     productInfo.append(...sections.slice(2));
-    
 
     block.innerHTML = '';
     block.appendChild(productDisplay);
