@@ -28,8 +28,9 @@ async function loadFonts() {
 }
 
 function buildBreadcrumb() {
-  // Only create breadcrumb if it doesn't exist
-  if (!document.querySelector('.breadcrumb')) {
+  const showBreadcrumb = getMetadata('breadcrumb').toLowerCase() === 'true';
+  
+  if (showBreadcrumb && !document.querySelector('.breadcrumb')) {
     const breadcrumb = createBreadcrumb();
     if (breadcrumb) {
       document.querySelector('main').prepend(breadcrumb);
