@@ -123,6 +123,13 @@ h1#top-sellers {
     .add-to-cart {
         font-size: var(--product-button-mobile-font-size);
     }
+    .heart-icon{
+        width: 20px;
+        height: 20px;
+    }
+    .custom-slick-dots{
+        left: 45%;
+    }
 }
 
 @media (width >= 600px) {
@@ -133,11 +140,6 @@ h1#top-sellers {
     .product-price {
         font-size: 1.1rem;
     }
-
-    .add-to-cart {
-        padding: 0.55rem 2.5rem;
-    }
-
     .heart-icon {
         width: 22px;
         height: 22px;
@@ -160,6 +162,9 @@ h1#top-sellers {
 
     .add-to-cart {
         padding: 0.5rem 2.9rem;
+    }
+    .add-to-cart:hover{
+        background:var(--link-color);
     }
 
     .heart-icon {

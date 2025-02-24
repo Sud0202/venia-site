@@ -16,7 +16,7 @@
     border-bottom: 1px solid var(--border-color);
 }
 .product-details h2 {
-    font-size: var(--heading-font-size-s);
+    font-size: var(--heading-font-size-xs);
     color: var(--text-color);
     font-weight: 400;
     font-family: var(--heading-font-family);
@@ -33,6 +33,13 @@
 .size-selection, 
 .quantity-section {
     border-bottom: 1px solid var(--border-color);
+}
+.size-selection{
+    display: flex;
+    flex-direction: column-reverse;
+}
+.color-selection p{
+    font-size: var(--heading-font-size-xs);
 }
 
 .color-options, 
