@@ -18,7 +18,7 @@ export default async function decorate(block) {
 
   block.append(footer);
   
-  // After footer is loaded, find and replace the input text with input element
+
   const allLis = block.querySelectorAll('li');
   allLis.forEach(li => {
     if (li.textContent.trim().toLowerCase() === 'input') {

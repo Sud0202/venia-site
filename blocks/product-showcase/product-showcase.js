@@ -20,7 +20,7 @@ export default async function decorate(block) {
 
 async function fetchProductsData() {
     const response = await fetch('http://localhost:3000/query-index.json');
-    return await response.json();
+    return response.json();
 }
 
 function createProductCard(product) {

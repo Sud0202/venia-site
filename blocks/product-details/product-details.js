@@ -20,9 +20,7 @@ function setupProductDisplay(mainImageContainer, thumbnailsContainer) {
 function setupColorSection(colorSection) {
     colorSection.classList.add('color-selection');
     const colorHeader = colorSection.children[0];
-    console.log(colorHeader)
     const colorOptions = colorSection.children[1];
-    console.log(colorOptions)
     colorOptions.classList.add('color-options');
 
     const selectedColorText = colorHeader.querySelector('p');
@@ -52,7 +50,7 @@ function setupSizeSection(sizeSection) {
     const sizeOptions = sizeSection.children[1];
     sizeOptions.classList.add('size-options');
 
-    const selectedSizeText = sizeHeader.querySelector('h2#selected-fashion-size-none');
+    const selectedSizeText = sizeHeader.querySelector('h2');
     sizeHeader.removeChild(selectedSizeText);
     sizeOptions.insertAdjacentElement('afterend', selectedSizeText);
 
@@ -74,7 +72,7 @@ function setupQuantitySection(quantitySection) {
     const quantityControls = quantitySection.children[1];
     quantityControls.classList.add('quantity-controls');
 
-    const [minus, value, plus] = quantityControls.textContent.trim().split(' ');
+    const [minus, value, plus] = quantityControls.textContent.split(' ');
 
     quantityControls.innerHTML = `
         <button class="rounded-btn minus">${minus}</button>
@@ -87,22 +85,18 @@ function setupActionButtons(actionSection) {
     actionSection.classList.add('action-buttons');
 }
 export default function decorate(block) {
-    const [mainImageContainer, thumbnailsContainer, titleSection, colorSection, sizeSection, quantitySection, actionSection] = block.children;
-    const productDisplay = setupProductDisplay(mainImageContainer, thumbnailsContainer);
+    const sections = [...block.children];
+    const productDisplay = setupProductDisplay(sections[0], sections[1]);
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
 
-    titleSection.classList.add('title-price');
-    setupColorSection(colorSection);
-    setupSizeSection(sizeSection);
-    setupQuantitySection(quantitySection);
-    setupActionButtons(actionSection);
+    sections[2].classList.add('title-price');
+    setupColorSection(sections[3]);
+    setupSizeSection(sections[4]);
+    setupQuantitySection(sections[5]);
+    setupActionButtons(sections[6]);
 
-    productInfo.appendChild(titleSection);
-    productInfo.appendChild(colorSection);
-    productInfo.appendChild(sizeSection);
-    productInfo.appendChild(quantitySection);
-    productInfo.appendChild(actionSection);
+    productInfo.append(...sections.slice(2));
     
 
     block.innerHTML = '';
