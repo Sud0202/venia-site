@@ -1,28 +1,22 @@
-.hero-banner{
+.hero-banner-wrapper .hero-banner {
   margin-top: 2%;
 }
-.hero-carousel {
+
+.hero-banner-wrapper .hero-carousel {
   position: relative;
   width: 100%;
   height: 30vh;
   z-index: 1; 
 }
 
-.hero-slides-wrapper {
-  position: relative;
+.hero-banner-wrapper .hero-slides-wrapper {
+  position: absolute;
   width: 100%;
   height: 95%;
   overflow: hidden;
 }
 
-.hero-carousel-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 3%;
-}
-
-.hero-slide {
+.hero-banner-wrapper .hero-slide {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -34,67 +28,56 @@
   z-index: 1;
 }
 
-.hero-slide.active {
+.hero-banner-wrapper .hero-slide.active {
   opacity: 1;
   transform: translateX(0);
   z-index: 2;
 }
 
-.hero-slide.prev {
+.hero-banner-wrapper .hero-slide.prev {
   transform: translateX(-100%);
   opacity: 0;
   z-index: 1;
 }
 
-.hero-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero-slide-text {
+.hero-banner-wrapper .hero-slide-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
-  max-width: 800px;
   text-align: center;
-  z-index: 2;
 }
 
-.hero-slide-text h1 {
+.hero-banner-wrapper .hero-slide-text h1 {
   font-size: var(--heading-font-size-l);
   margin-bottom: var(--gap-small);
   font-weight: 100;
   color: var(--text-color);
 }
 
-.hero-slide-text p {
+.hero-banner-wrapper .hero-slide-text p {
   font-size: var(--body-font-size-xs);
   margin-bottom: 1.5rem;
   color: var(--text-color);
 }
 
-.hero-slide-text a.button:any-link {
+.hero-banner-wrapper .hero-slide-text a.button:any-link {
   padding: 0;
   margin: 0;
   background: none;
   color: var(--text-color);
   font-size: 1rem;
-  font-weight: normal;
   text-decoration: underline;
 }
 
-.hero-carousel-indicators {
+.hero-banner-wrapper .hero-carousel-indicators {
   display: flex;
   gap: 12px;
   justify-content: center;
-  padding: 0;
-  margin: 0;
 }
 
-.hero-indicator {
+.hero-banner-wrapper .hero-indicator {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -103,63 +86,60 @@
   transition: all 0.3s ease;
 }
 
-.hero-indicator.active {
+.hero-banner-wrapper .hero-indicator.active {
   background-color: #000000;
   transform: scale(1.2);
 }
 
-/* Mobile styles (360px and up) */
 @media (width >= 360px) {
-  .hero-carousel {
+  .hero-banner-wrapper .hero-carousel {
     min-height: 400px;
   }
 
-  .hero-slide-text {
+  .hero-banner-wrapper .hero-slide-text {
     width: 75%;
   }
 
-  .hero-slide-text h1 {
+  .hero-banner-wrapper .hero-slide-text h1 {
     font-size: 1.4rem;
     margin-bottom: 0.8rem;
   }
 
-  .hero-slide-text p {
+  .hero-banner-wrapper .hero-slide-text p {
     font-size: 0.85rem;
   }
 }
 
-/* Tablet styles (600px and up) */
 @media (width >= 600px) {
-  .hero-carousel {
-    min-height: 500px;
+  .hero-banner-wrapper .hero-carousel {
+    min-height: 700px;
   }
 
-  .hero-slide-text {
+  .hero-banner-wrapper .hero-slide-text {
     width: 60%;
   }
 
-  .hero-slide-text h1 {
+  .hero-banner-wrapper .hero-slide-text h1 {
     font-size: var(--heading-font-size-xl);
     margin-bottom: var(--gap-medium);
   }
 
-  .hero-slide-text p {
+  .hero-banner-wrapper .hero-slide-text p {
     font-size: var(--body-font-size-s);
     margin-bottom: var(--gap-large);
   }
 
-  .hero-slide-text a.button:any-link {
+  .hero-banner-wrapper .hero-slide-text a.button:any-link {
     font-size: 0.95rem;
   }
 }
 
-/* Keep existing desktop styles */
 @media (width >= 900px) {
-  .hero-carousel-section {
+  .hero-banner-wrapper .hero-carousel-section {
     gap: 0;
   }
-
-  .hero-slide-text {
+  
+  .hero-banner-wrapper .hero-slide-text {
     left: 5%;
     transform: translateY(-60%);
     text-align: center;
@@ -167,12 +147,12 @@
     gap: 25px;
   }
 
-  .hero-slide-text h1 {
+  .hero-banner-wrapper .hero-slide-text h1 {
     font-size: var(--heading-font-size-xxl);
     font-weight: 100;
   }
 
-  .hero-slide-text p {
+  .hero-banner-wrapper .hero-slide-text p {
     font-size: var(--body-font-size-m);
   }
 }

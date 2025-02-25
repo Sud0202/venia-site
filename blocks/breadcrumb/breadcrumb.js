@@ -1,5 +1,4 @@
 function createBreadcrumbHTML(currentPath) {
-
     const paths = currentPath.replace(/^\/|\/$/g, '').split('/');
     let html = '<span class="breadcrumb-item"><a href="/">Home</a></span>';
     
@@ -20,11 +19,7 @@ function createBreadcrumbHTML(currentPath) {
     return html;
 }
 
-export function createBreadcrumb() {
+export default function decorate(block) {
     const currentPath = window.location.pathname;
-    
-    const breadcrumb = document.createElement('div');
-    breadcrumb.classList.add('breadcrumb');
-    breadcrumb.innerHTML = createBreadcrumbHTML(currentPath);
-    return breadcrumb;
+    block.innerHTML = createBreadcrumbHTML(currentPath);
 }

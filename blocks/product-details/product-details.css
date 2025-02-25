@@ -1,60 +1,74 @@
-.product-details, .product-display {
+.product-details-wrapper .product-details,
+.product-details-wrapper .product-display {
     display: flex;
     flex-direction: column;
 }
 
-.thumbnails-wrapper {
+.product-details-wrapper .main-image {
+    width: 100%;
+}
+
+.product-details-wrapper .main-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-details-wrapper .thumbnails-wrapper {
     display: flex;
 }
 
-.thumbnails-wrapper .thumbnail:nth-child(1) {
+.product-details-wrapper .thumbnails-wrapper .thumbnail:nth-child(1) {
     box-shadow: var(--thumbnail-shadow);
 }
-.title-price {
+
+.product-details-wrapper .title-price {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid var(--border-color);
 }
-.product-details h2 {
+
+.product-details-wrapper .product-details h2 {
     font-size: var(--heading-font-size-xs);
     color: var(--text-color);
     font-weight: 400;
     font-family: var(--heading-font-family);
 }
 
-
-.product-details .size-selection > h2 {
+.product-details-wrapper .product-details .size-selection > h2 {
     font-size: var(--heading-font-size-xs);
     color: var(--text-color);
     font-weight: 400;
 }
 
-.color-selection, 
-.size-selection, 
-.quantity-section {
+.product-details-wrapper .color-selection, 
+.product-details-wrapper .size-selection, 
+.product-details-wrapper .quantity-section {
     border-bottom: 1px solid var(--border-color);
 }
-.size-selection{
+
+.product-details-wrapper .size-selection {
     display: flex;
     flex-direction: column-reverse;
 }
-.color-selection p{
+
+.product-details-wrapper .color-selection p {
     font-size: var(--heading-font-size-xs);
 }
 
-.color-options, 
-.size-options {
+.product-details-wrapper .color-options, 
+.product-details-wrapper .size-options {
     display: flex;
     gap: var(--gap-medium);
 }
 
-.color-box {
+.product-details-wrapper .color-box {
     width: var(--control-size-large);
     height: var(--control-size-large);
     border-radius: var(--border-radius-small);
 }
 
-.size-box {
+.product-details-wrapper .size-box {
     width: var(--control-size-large);
     height: var(--control-size-large);
     display: flex;
@@ -63,13 +77,13 @@
     border: 1px solid var(--border-color);
 }
 
-.quantity-controls {
+.product-details-wrapper .quantity-controls {
     display: flex;
     align-items: center;
     gap: 2%;
 }
 
-.quantity-controls .rounded-btn {
+.product-details-wrapper .quantity-controls .rounded-btn {
     width: var(--control-size-small);
     height: var(--control-size-small);
     border-radius: 50%;
@@ -85,7 +99,7 @@
     font-weight: 400;
 }
 
-.squared-input {
+.product-details-wrapper .squared-input {
     width: 60px;
     height: var(--control-size-small);
     border: var(--border-width) solid var(--text-color);
@@ -94,14 +108,14 @@
     font-size: 1.2rem;
 }
 
-.action-buttons {
+.product-details-wrapper .action-buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: var(--gap-medium);
 }
 
-.action-buttons h2{
+.product-details-wrapper .action-buttons h2 {
     background-color: var(--button-background);
     color: var(--button-text);
     border-radius: var(--border-radius-large);
@@ -110,7 +124,7 @@
     text-align: center;
 }
 
-.action-buttons p {
+.product-details-wrapper .action-buttons p {
     display: flex;
     gap: 0.5rem;
     margin: 0;
@@ -119,58 +133,69 @@
     color: var(--text-color);
 }
 
-.action-buttons .icon-heart img {
+.product-details-wrapper .action-buttons .icon-heart img {
     width: 20px;
     height: 20px;
     margin-right: 0.5rem;
 }
 
 @media (width >= 360px) {
-    .product-details,
-    .product-display,
-    .thumbnails-wrapper,
-    .title-price,
-    .action-buttons {
+    .product-details-wrapper .product-details,
+    .product-details-wrapper .product-display,
+    .product-details-wrapper .thumbnails-wrapper,
+    .product-details-wrapper .title-price,
+    .product-details-wrapper .action-buttons {
         gap: var(--gap-small);
     }
 
-    .title-price {
+    .product-details-wrapper .thumbnails-wrapper {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .product-details-wrapper .thumbnails-wrapper .thumbnail {
+        width: 23%;
+        aspect-ratio: 1;
+    }
+
+    .product-details-wrapper .title-price {
         gap: 0.8rem;
         margin-bottom: 1.5rem;
         padding-bottom: 0.8rem;
     }
 
-    .title-price h2 {
+    .product-details-wrapper .title-price h2 {
         font-size: var(--heading-font-size-xs);
         margin: 0;
         margin-top: 0.5rem;
     }
 
-    .title-price p {
+    .product-details-wrapper .title-price p {
         font-size: 1.1rem;
         margin: 0;
     }
 
-    .color-box, 
-    .size-box {
+    .product-details-wrapper .color-box, 
+    .product-details-wrapper .size-box {
         width: var(--control-size-medium);
         height: var(--control-size-medium);
     }
-    .quantity-section {
+
+    .product-details-wrapper .quantity-section {
         padding-bottom: 1.5rem;
     }
 
-    .size-box {
+    .product-details-wrapper .size-box {
         font-size: 1.1rem;
     }
 
-    .action-buttons {
+    .product-details-wrapper .action-buttons {
         gap: 0.8rem;
         margin-top: 1.2rem;
         align-items: flex-start;
     }
 
-    .action-buttons h2 {
+    .product-details-wrapper .action-buttons h2 {
         font-size: var(--heading-font-size-xs);
         background-color: var(--button-background);
         color: var(--button-text);
@@ -182,75 +207,91 @@
 }
 
 @media (width >= 600px) {
-    .product-details,
-    .product-display,
-    .thumbnails-wrapper {
+    .product-details-wrapper .product-details,
+    .product-details-wrapper .product-display,
+    .product-details-wrapper .thumbnails-wrapper {
         gap: var(--gap-large);
     }
 
-    .title-price h2 {
+    .product-details-wrapper .thumbnails-wrapper {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .product-details-wrapper .thumbnails-wrapper .thumbnail {
+        width: 20%;
+        aspect-ratio: 1;
+        object-fit: cover;
+    }
+
+    .product-details-wrapper .title-price h2 {
         font-size: var(--heading-font-size-s);
     }
 
-    .title-price p {
+    .product-details-wrapper .title-price p {
         font-size: 1.2rem;
     }
 
-    .color-box, 
-    .size-box {
+    .product-details-wrapper .color-box, 
+    .product-details-wrapper .size-box {
         width: var(--control-size-medium);
         height: var(--control-size-medium);
     }
 
-    .action-buttons {
+    .product-details-wrapper .action-buttons {
         gap: var(--gap-medium);
         margin-top: 1.4rem;
         align-items: flex-start;
     }
 
-    .action-buttons h2 {
+    .product-details-wrapper .action-buttons h2 {
         padding: 0.9rem;
         max-width: 300px;
     }
 
-    .action-buttons p {
+    .product-details-wrapper .action-buttons p {
         justify-content: flex-start;
         padding-left: 0;
     }
 }
 
 @media (width >= 900px) {
-    .product-details {
-        flex-direction: row; 
+    .product-details-wrapper .product-details {
+        flex-direction: row;
     }
 
-    .product-display {
+    .product-details-wrapper .product-display {
         flex: 1;
         flex-direction: row-reverse;
     }
 
-    .main-image {
+    .product-details-wrapper .main-image {
         flex: 4;
     }
 
-    .thumbnails-wrapper {
+    .product-details-wrapper .thumbnails-wrapper {
         flex: 1;
         flex-direction: column;
     }
 
-    .product-info {
+    .product-details-wrapper .thumbnails-wrapper .thumbnail {
+        width: 100%;
+    }
+
+    .product-details-wrapper .product-info {
         flex: 1;
     }
 
-    .title-price {
+    .product-details-wrapper .title-price {
         flex-direction: row;
         justify-content: space-between;
     }
-    .action-buttons {
-        align-items: center;
 
+    .product-details-wrapper .action-buttons {
+        align-items: center;
     }
-    .action-buttons h2 {
+
+    .product-details-wrapper .action-buttons h2 {
         background-color: var(--button-background);
         font-size: var(--heading-font-size-s);
         padding: 0.7rem;

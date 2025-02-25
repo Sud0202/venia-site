@@ -136,7 +136,6 @@ export default async function decorate(block) {
     if (defaultWrapper) {
       while (defaultWrapper.firstElementChild) {
         const element = defaultWrapper.firstElementChild;
-        // Wrap search icon and text in an anchor tag
         if (element.querySelector('.icon-search')) {
           const link = document.createElement('a');
           link.href = '/search'; 
@@ -146,7 +145,6 @@ export default async function decorate(block) {
           link.appendChild(icon);
           toolsWrapper.appendChild(link);
           
-          // Move the existing Search text p tag after the link
           if (element.nextElementSibling && element.nextElementSibling.textContent === 'Search') {
             toolsWrapper.appendChild(element.nextElementSibling);
           }

@@ -1,29 +1,29 @@
-.info-banner {
+.info-banner-wrapper .info-banner {
     display: flex;
     flex-direction: column;
 }
 
-.info-banner > div {
+.info-banner-wrapper .info-banner > div {
     display: flex;
     flex-direction: column-reverse;
 }
 
-.info-banner.feature-card > div {
+.info-banner-wrapper .info-banner.feature-card > div {
     flex-direction: column;
 }
 
-.info-banner > div > div:last-child {
+.info-banner-wrapper .info-banner > div > div:last-child {
     text-align: center;
     width: 90%;
     margin: auto;
 }
 
-.info-banner.feature-card > div > div:last-child {
+.info-banner-wrapper .info-banner.feature-card > div > div:last-child {
     background-color: rgb(27, 37, 44);
     padding: 1.2rem;
 }
 
-.info-banner h1 {
+.info-banner-wrapper .info-banner h1 {
     font-family: var(--heading-font-family);
     font-weight: var(--font-weight-light);
     font-style: var(--font-style-normal);
@@ -33,7 +33,7 @@
     line-height: 1.2;
 }
 
-.info-banner h2 {
+.info-banner-wrapper .info-banner h2 {
     font-family: var(--body-font-family);
     font-size: var(--heading-font-size-xl);
     margin: 0;
@@ -41,24 +41,24 @@
     font-weight: 300;
 }
 
-.info-banner h2:last-of-type {
+.info-banner-wrapper .info-banner h2:last-of-type {
     font-size: var(--body-font-size-m);
     margin-top: var(--gap-small);
     font-weight: 400;
 }
 
-.info-banner p {
+.info-banner-wrapper .info-banner p {
     font-family: var(--body-font-family);
     font-size: var(--body-font-size-xs);
     font-weight: 400;
     line-height: 1.5;
 }
 
-.info-banner.feature-card > div > div {
+.info-banner-wrapper .info-banner.feature-card > div > div {
     color: var(--button-text);
 }
 
-.info-banner a.button {
+.info-banner-wrapper .info-banner a.button {
     text-decoration: underline;
     word-break: break-word;
     background-color: transparent;
@@ -66,104 +66,105 @@
 }
 
 @media (width >= 360px) {
-    .info-banner {
+    .info-banner-wrapper .info-banner {
         margin: 1.5rem;
     }
 
-    .info-banner.feature-card > div > div:last-child {
+    .info-banner-wrapper .info-banner.feature-card > div > div:last-child {
         width: 85%;
     }
 
-    .info-banner h1 {
+    .info-banner-wrapper .info-banner h1 {
         font-size: var(--heading-font-size-xl);
     }
 
-    .info-banner h2:last-of-type {
+    .info-banner-wrapper .info-banner h2:last-of-type {
         font-size: var(--heading-font-size-s);
     }
 
-    .info-banner p {
+    .info-banner-wrapper .info-banner p {
         font-size: var(--body-font-size-s);
     }
 
-    .info-banner a.button {
+    .info-banner-wrapper .info-banner a.button {
         font-size: var(--body-font-size-s);
     }
 }
 
 @media (width >= 600px) {
-    .info-banner {
+    .info-banner-wrapper .info-banner {
         width: 90%;
         margin: 20px auto;
     }
 
-    .info-banner.feature-card > div > div:last-child {
+    .info-banner-wrapper .info-banner.feature-card > div > div:last-child {
         width: 94%;
     }
 
-    .info-banner h1 {
+    .info-banner-wrapper .info-banner h1 {
         font-size: 2.8rem;
     }
 
-    .info-banner h2:last-of-type {
+    .info-banner-wrapper .info-banner h2:last-of-type {
         font-size: 2.25rem;
     }
 
-    .info-banner p {
+    .info-banner-wrapper .info-banner p {
         font-size: 1.3rem;
     }
-    .info-banner a.button {
+    
+    .info-banner-wrapper .info-banner a.button {
         font-size: 1rem;
     }
 }
 
 @media (width >= 900px) {
-    .info-banner {
+    .info-banner-wrapper .info-banner {
         padding: 2rem;
     }
 
-    .info-banner > div {
+    .info-banner-wrapper .info-banner > div {
         flex-direction: row-reverse;
         gap: 3rem;
         align-items: center;
     }
 
-    .info-banner.feature-card > div {
+    .info-banner-wrapper .info-banner.feature-card > div {
         flex-direction: row;
         gap: 0;
     }
 
-    .info-banner > div > div:first-child {
+    .info-banner-wrapper .info-banner > div > div:first-child {
         flex: 1.5;
     }
 
-    .info-banner.feature-card > div > div:first-child {
+    .info-banner-wrapper .info-banner.feature-card > div > div:first-child {
         flex: 5;
     }
 
-    .info-banner > div > div:last-child {
+    .info-banner-wrapper .info-banner > div > div:last-child {
         flex: 3;
     }
 
-    .info-banner h1 {
+    .info-banner-wrapper .info-banner h1 {
         font-size: 3.75rem;
         font-weight: 300;
         line-height: 1.25;
     }
 
-    .info-banner.feature-card h1 {
+    .info-banner-wrapper .info-banner.feature-card h1 {
         font-size: 4.35rem;
     }
     
-    .info-banner h2:last-of-type {
+    .info-banner-wrapper .info-banner h2:last-of-type {
         font-size: 2.125rem;
     }
 
-    .info-banner.feature-card h2:last-of-type {
+    .info-banner-wrapper .info-banner.feature-card h2:last-of-type {
         font-size: 1.125rem;
     }
 
-    .info-banner a {
+    .info-banner-wrapper .info-banner a {
         font-size: 1.125rem;
     }
 }

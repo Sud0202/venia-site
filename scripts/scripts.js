@@ -11,8 +11,10 @@ import {
   loadSections,
   loadCSS,
   getMetadata,
+  buildBlock,
+  decorateBlock,
+  loadBlock,
 } from './aem.js';
-import { createBreadcrumb } from '../blocks/breadcrumb/breadcrumb.js';
 
 
 /**
@@ -31,9 +33,14 @@ function buildBreadcrumb() {
   const showBreadcrumb = getMetadata('breadcrumb').toLowerCase() === 'true';
   
   if (showBreadcrumb && !document.querySelector('.breadcrumb')) {
-    const breadcrumb = createBreadcrumb();
+    const breadcrumb = buildBlock('breadcrumb', '');
     if (breadcrumb) {
-      document.querySelector('main').prepend(breadcrumb);
+      const wrapper = document.createElement('div');
+      wrapper.className = 'breadcrumb-wrapper';
+      wrapper.appendChild(breadcrumb);
+      document.querySelector('main').prepend(wrapper);
+      decorateBlock(breadcrumb);
+      loadBlock(breadcrumb);
     }
   }
 }
