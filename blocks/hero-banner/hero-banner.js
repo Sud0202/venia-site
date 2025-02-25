@@ -18,9 +18,18 @@ function createHeroTextContainer(textElements, shopNowButton, index) {
     textContainer.classList.add('hero-slide-text');
     
     const textStartIndex = index * 2;
-    if (textElements[textStartIndex] && textElements[textStartIndex + 1]) {
-        textContainer.appendChild(textElements[textStartIndex]);
-        textContainer.appendChild(textElements[textStartIndex + 1]);
+    const heading = textElements[textStartIndex];
+    const subtext = textElements[textStartIndex + 1];
+
+    if (heading) {
+        textContainer.appendChild(heading);
+    }
+    
+    if (subtext) {
+        textContainer.appendChild(subtext);
+    }
+    
+    if (heading || subtext) {
         textContainer.appendChild(shopNowButton.cloneNode(true));
     }
     
