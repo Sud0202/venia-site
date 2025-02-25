@@ -70,7 +70,7 @@ function setupSizeSection(sizeSection) {
 
     const sizesText = sizeOptions?.querySelector('p')?.textContent;
     if (sizesText && sizeOptions) {
-        const sizes = sizesText.split(' ').filter(Boolean);
+        const sizes = sizesText.split(' ');
         sizeOptions.innerHTML = '';
         sizes.forEach(size => {
             const sizeBox = document.createElement('div');

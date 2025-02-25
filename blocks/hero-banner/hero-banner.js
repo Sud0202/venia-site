@@ -30,7 +30,7 @@ function createHeroTextContainer(textElements, shopNowButton, index) {
     }
     
     if (heading || subtext) {
-        textContainer.appendChild(shopNowButton.cloneNode(true));
+        textContainer.appendChild(shopNowButton);
     }
     
     return textContainer;
