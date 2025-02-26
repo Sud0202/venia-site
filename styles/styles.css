@@ -282,25 +282,3 @@ main > .section:first-of-type {
     padding: 20px 32px;
   }
 }
-
-/* Update media queries to use new heading size variables */
-@media (width >= 360px) {
-  :root {
-    --heading-font-size-xl: var(--heading-mobile-size-xl);
-    --heading-font-size-l: var(--heading-mobile-size-l);
-    --heading-font-size-m: var(--heading-mobile-size-m);
-    --heading-font-size-s: var(--heading-mobile-size-s);
-    --heading-font-size-xs: var(--heading-mobile-size-xs);
-  }
-}
-
-@media (width >= 600px) {
-  :root {
-    --heading-font-size-xl: var(--heading-tablet-size-xl);
-    --heading-font-size-l: var(--heading-tablet-size-l);
-    --heading-font-size-m: var(--heading-tablet-size-m);
-    --heading-font-size-s: var(--heading-tablet-size-s);
-    --heading-font-size-xs: var(--heading-tablet-size-xs);
-  }
-}
-

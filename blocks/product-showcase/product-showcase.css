@@ -99,31 +99,6 @@ h1#top-sellers {
     background-color: rgb(24, 24, 25);
 }
 
-@media (width >= 360px) {
-    .product-showcase-wrapper .product-card {
-        padding: var(--gap-medium);
-    }
-
-    .product-showcase-wrapper .product-title {
-        font-size: var(--product-title-mobile-font-size);
-        margin: 1rem 0;
-    }
-
-    .product-showcase-wrapper .product-price {
-        font-size: var(--product-price-mobile-font-size);
-        margin: 0;
-    }
-
-    .product-showcase-wrapper .add-to-cart {
-        font-size: var(--product-button-mobile-font-size);
-    }
-
-    .product-showcase-wrapper .heart-icon {
-        width: 20px;
-        height: 20px;
-    }
-}
-
 @media (width >= 600px) {
     .product-showcase-wrapper .product-title {
         font-size: 1.2rem;

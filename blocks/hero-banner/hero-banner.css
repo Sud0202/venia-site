@@ -91,24 +91,6 @@
   transform: scale(1.2);
 }
 
-@media (width >= 360px) {
-  .hero-banner-wrapper .hero-carousel {
-    min-height: 400px;
-  }
-
-  .hero-banner-wrapper .hero-slide-text {
-    width: 75%;
-  }
-
-  .hero-banner-wrapper .hero-slide-text h1 {
-    font-size: 1.4rem;
-    margin-bottom: 0.8rem;
-  }
-
-  .hero-banner-wrapper .hero-slide-text p {
-    font-size: 0.85rem;
-  }
-}
 
 @media (width >= 600px) {
   .hero-banner-wrapper .hero-carousel {

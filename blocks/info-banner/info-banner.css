@@ -65,32 +65,6 @@
     font-size: var(--product-button-font-size);
 }
 
-@media (width >= 360px) {
-    .info-banner-wrapper .info-banner {
-        margin: 1.5rem;
-    }
-
-    .info-banner-wrapper .info-banner.feature-card > div > div:last-child {
-        width: 85%;
-    }
-
-    .info-banner-wrapper .info-banner h1 {
-        font-size: var(--heading-font-size-xl);
-    }
-
-    .info-banner-wrapper .info-banner h2:last-of-type {
-        font-size: var(--heading-font-size-s);
-    }
-
-    .info-banner-wrapper .info-banner p {
-        font-size: var(--body-font-size-s);
-    }
-
-    .info-banner-wrapper .info-banner a.button {
-        font-size: var(--body-font-size-s);
-    }
-}
-
 @media (width >= 600px) {
     .info-banner-wrapper .info-banner {
         width: 90%;

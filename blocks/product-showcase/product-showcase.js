@@ -1,9 +1,10 @@
 export default async function decorate(block) {
     const productsWrapper = document.createElement('div');
     productsWrapper.classList.add('products-slider');
+    const url=block.children[0].querySelector('a').href;
 
     try {
-        const data = await fetchProductsData();
+        const data = await fetchProductsData(url);
         data.data.forEach(product => {
             const productCard = createProductCard(product);
             productsWrapper.appendChild(productCard);
@@ -18,8 +19,8 @@ export default async function decorate(block) {
     }
 }
 
-async function fetchProductsData() {
-    const response = await fetch('http://localhost:3000/query-index.json');
+async function fetchProductsData(url) {
+    const response = await fetch(url);
     const data = await response.json();
     return {
         data: data.data.filter(item => item.path.includes('/products'))
@@ -30,9 +31,11 @@ function createProductCard(product) {
     const productCard = document.createElement('div');
     productCard.classList.add('product-card');
     productCard.innerHTML = `
-        <div class="product-image">
-            <img src="${product.image}" alt="${product.title}">
-        </div>
+        <a href="${product.path}">
+            <div class="product-image">
+                <img src="${product.image}" alt="${product.title}">
+            </div>
+        </a>
         <div class="product-info">
             <h3 class="product-title">${product.title}</h3>
             <p class="product-price">${product.price}</p>
